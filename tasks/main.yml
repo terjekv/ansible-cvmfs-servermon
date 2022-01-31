@@ -1,0 +1,40 @@
+---
+#- name: Gather defaults
+#  include_vars: "../defaults/main.yml"
+
+- name: Gather variables for each operating system
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
+    - "{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
+    - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
+    - "{{ ansible_distribution | lower }}.yml"
+    - "{{ ansible_os_family | lower }}.yml"
+
+- import_tasks: install.yml
+  become: true
+  tags:
+    - cvmfs_servermon_install
+
+- import_tasks: selinux.yml
+  become: true
+  when: ansible_selinux.status == "enabled"
+  tags:
+    - cvmfs_servermon_selinux
+
+- import_tasks: configure.yml
+  become: true
+  tags:
+    - cvmfs_servermon_configure
+
+- name: Ensure http is enabled on boot
+  become: true
+  systemd:
+    daemon_reload: true
+    name: httpd
+    enabled: true
+    state: started
+  when:
+    - not ansible_check_mode
+  tags:
+    - cvmfs_servermon_run

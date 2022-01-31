@@ -1,0 +1,19 @@
+---
+- name: "Ensuring cvmfs-contrib repository is installed"
+  yum:
+    name: "https://ecsft.cern.ch/dist/cvmfs/cvmfs-contrib-release/cvmfs-contrib-release-latest.noarch.rpm"
+    state: present
+
+- name: "Install cvmfs-servermon"
+  yum:
+    name: "cvmfs-servermon"
+    state: present
+
+- name: Install configuration file for the API
+  template:
+    src: "api.j2"
+    dest: /etc/api.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart httpd

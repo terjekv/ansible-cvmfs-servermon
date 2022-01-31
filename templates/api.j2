@@ -1,0 +1,21 @@
+{{ ansible_managed | comment }}
+
+[Unit]
+Description=CVMFS Prometheus Exporter
+After=network-online.target
+
+[Service]
+Type=simple
+User={{ _cvmfs_exporter_system_user }}
+Group={{ _cvmfs_exporter_system_group }}
+ExecStart={{ _cvmfs_virtual_env_home }}/bin/python3.6 \
+    {{ _cvmfs_exporter_binary_install_dir }}/cvmfs_exporter.py \
+    --port {{ cvmfs_exporter_web_listen_port }}
+
+SyslogIdentifier=cvmfs_exporter
+Restart=always
+RestartSec=1
+StartLimitInterval=0
+
+[Install]
+WantedBy=multi-user.target

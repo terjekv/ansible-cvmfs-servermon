@@ -1,0 +1,5 @@
+- name: Install requirements
+  pip: 
+    requirements: /my_app/requirements.txt
+    virtualenv: /user/home/venvs/myenv
+    virtualenv_python: python3.4
