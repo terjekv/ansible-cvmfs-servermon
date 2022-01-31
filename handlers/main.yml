@@ -1,9 +1,9 @@
 ---
-- name: restart cvmfs_exporter
+- name: restart cvmfs_servermon
   become: true
   systemd:
     daemon_reload: true
-    name: cvmfs_exporter
+    name: cvmfs_servermon
     state: restarted
   when:
     - not ansible_check_mode

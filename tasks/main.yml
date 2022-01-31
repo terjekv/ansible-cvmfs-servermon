@@ -11,11 +11,6 @@
     - "{{ ansible_distribution | lower }}.yml"
     - "{{ ansible_os_family | lower }}.yml"
 
-- import_tasks: install.yml
-  become: true
-  tags:
-    - cvmfs_servermon_install
-
 - import_tasks: selinux.yml
   become: true
   when: ansible_selinux.status == "enabled"

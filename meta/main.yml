@@ -1,6 +1,6 @@
 galaxy_info:
   author: Terje Kvernes
-  description: CVMFS Prometheus Exporter
+  description: CVMFS Server monitor
   license: GPL
   company: none
   min_ansible_version: 2.7
@@ -22,11 +22,9 @@ galaxy_info:
 #        - 30
 #        - 31
   galaxy_tags:
-  - prometheus
   - cvmfs
   - alerts
   - alerting
   - monitoring
-  - metrics
 
 dependencies: []

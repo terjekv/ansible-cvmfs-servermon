@@ -1,12 +1,3 @@
 ---
-cvmfs_exporter_home_url: "https://gitlab.cern.ch/cloud/cvmfs-prometheus-exporter"
-
-cvmfs_exporter_web_listen_port: "9101"
-cvmfs_exporter_web_telemetry_path: "/metrics"
-
-_cvmfs_exporter_binary_install_dir: "/usr/local/bin"
-_cvmfs_exporter_system_group: "node-exp"
-_cvmfs_exporter_system_user: "{{ _cvmfs_exporter_system_group }}"
-
-_cvmfs_virtual_env_home: "/var/lib/virtualenvs/cvmfs_exporter_virtualenv"
+cvmfs_servermon_home_url: "https://github.com/cvmfs-contrib/cvmfs-servermon"
 
