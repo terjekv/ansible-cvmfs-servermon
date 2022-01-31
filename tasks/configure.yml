@@ -12,7 +12,7 @@
 - name: Install configuration file for the API
   template:
     src: "api.j2"
-    dest: /etc/api.conf
+    dest: /etc/cvmfsmon/api.conf
     owner: root
     group: root
     mode: 0644
