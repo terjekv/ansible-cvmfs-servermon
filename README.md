@@ -1,6 +1,6 @@
 # Description
 
-Deploy [Cern's CVMFS prometheus exporter](https://gitlab.cern.ch/cloud/cvmfs-prometheus-exporter) to a system using ansible.
+Deploy [Cern's cvmfs-servermon](https://github.com/cvmfs-contrib/cvmfs-servermon) to a system using ansible.
 
 # Requirements
 
